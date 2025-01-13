@@ -30,6 +30,7 @@ pnpm-lock.yaml
 *.sw?
 
 *.tsbuildinfo
+.eslintcache
 
 .conf
 

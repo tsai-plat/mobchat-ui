@@ -1,5 +1,5 @@
 {
-  "name": "tsai-mobui-template",
+  "name": "@tsai-platform/mobchat-ui",
   "version": "0.1.0",
   "private": true,
   "type": "module",

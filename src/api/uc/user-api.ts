@@ -1,4 +1,9 @@
-import { PlatformEnum, UserStatusEnum, type IUser } from '@tsailab/core-types'
+import {
+  PlatformEnum,
+  UserStatusEnum,
+  type IUser,
+  type WechatAuthorizeParam,
+} from '@tsailab/core-types'
 import { APIVersionEnum } from '../api.version.enum'
 import { HttpRequest } from '../axios/request'
 import { UCModuleApis } from './apis.constants'
@@ -37,4 +42,12 @@ export function registUser(data: RegistCustomUser) {
     platform: PlatformEnum.MOB_PLATFORM,
     code,
   })
+}
+
+export function wxSlientLogin(params: WechatAuthorizeParam) {
+  return HttpRequest.post(UCModuleApis.wxSlientLogin, { ...params })
+}
+
+export function wxRegisteredAndLogin(params: WechatAuthorizeParam) {
+  return HttpRequest.post(UCModuleApis.wxRegisteredLogin, { ...params })
 }

@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full flex justify-center items-start text-sm text-white py-3">
+  <div class="w-full flex justify-center items-start text-sm py-3">
     <van-checkbox v-model="checked" icon-size="16px" checked-color="#00FF00">
-      <span class="text-white">
+      <span :class="textClass">
         {{ $t('common.agreementTip') }}
       </span>
     </van-checkbox>
@@ -12,12 +12,26 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onBeforeMount, ref } from 'vue'
+
+interface Props {
+  textClass?: string | string[]
+  defChecked?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  textClass: 'text-white'
+
+})
 
 const checked = ref<boolean>(false)
 
 defineExpose({
   checked: checked,
+})
+
+onBeforeMount(() => {
+  checked.value = !!props?.defChecked
 })
 </script>
 

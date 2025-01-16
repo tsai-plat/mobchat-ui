@@ -2,11 +2,38 @@ import { UIPageEnum } from '@/enums'
 import type { RouteRecordRaw } from 'vue-router'
 import HomeIndex from '@/pages/home/HomeIndex.vue'
 
-const routeModuleList: RouteRecordRaw[] = [
+const routeLayoutList: RouteRecordRaw[] = [
   {
     path: '/index',
-    name: 'HomeIndex',
+    name: UIPageEnum.BASE_HOME_NAME,
     component: HomeIndex,
+    meta: {
+      title: '智能助手',
+    },
+  },
+  {
+    path: UIPageEnum.DISCOVER,
+    name: UIPageEnum.DISCOVER_NAME,
+    component: () => import('@/pages/discover/DiscoverIndex.vue'),
+    meta: {
+      title: '发现',
+    },
+  },
+  {
+    path: UIPageEnum.CREATION,
+    name: UIPageEnum.CREATION_NAME,
+    component: () => import('@/pages/creation/CreationIndex.vue'),
+    meta: {
+      title: '创作心',
+    },
+  },
+  {
+    path: UIPageEnum.USER_CENTER,
+    name: UIPageEnum.USER_CENTER_NAME,
+    component: () => import('@/pages/mine/MyIndex.vue'),
+    meta: {
+      title: '个人中心',
+    },
   },
 ]
 
@@ -19,6 +46,15 @@ export const LoginRoute: RouteRecordRaw = {
   },
 }
 
+export const WechatLoginRoute: RouteRecordRaw = {
+  path: UIPageEnum.WECHAT_AUTHORIZE,
+  name: UIPageEnum.WECHAT_AUTHORIZE_NAME.toString(),
+  component: () => import('@/pages/auth/WechatLogin.vue'),
+  meta: {
+    title: '微信授权登录',
+  },
+}
+
 export const SigninRoute: RouteRecordRaw = {
   path: '/signin',
   name: 'Signin',
@@ -28,13 +64,19 @@ export const SigninRoute: RouteRecordRaw = {
   },
 }
 
-export const RootRoute: RouteRecordRaw = {
+export const LayoutRoute: RouteRecordRaw = {
   path: '/',
-  name: 'Root',
+  name: 'RootLayout',
+  component: () => import('@/layout/Index.vue'),
   redirect: UIPageEnum.BASE_HOME,
-  meta: {
-    title: 'Root',
-  },
+  children: [...routeLayoutList],
 }
 
-export const routes: RouteRecordRaw[] = [LoginRoute, SigninRoute, RootRoute, ...routeModuleList]
+export const routes: RouteRecordRaw[] = [
+  LayoutRoute,
+  LoginRoute,
+  WechatLoginRoute,
+  SigninRoute,
+
+  { path: '/:pathMatch(.*)*', redirect: '/' },
+]

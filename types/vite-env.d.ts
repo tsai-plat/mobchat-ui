@@ -13,11 +13,17 @@ interface ImportMetaEnv {
 
   VITE_BUILD_COMPRESS: 'gzip' | 'brotli' | 'none'
   VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE: boolean
+
+  VITE_APP_HASH?: string
   /** global */
   VITE_GLOB_APP_NAME: string
   VITE_GLOB_API_URL: string
   VITE_GLOB_IMG_URL: string
-  VITE_APP_HASH?: string
+
+  /** wechat */
+  VITE_WECHAT_GH_APPID: string
+  VITE_WECHAT_AUTH_REDIRECT_URL: string
+  VITE_WECHAT_AUTH_SLENT_URL: string
 }
 
 interface ImportMeta {
@@ -32,4 +38,10 @@ interface WrapperEnv extends ImportMetaEnv {
     hash: string
     buildAt: string
   }
+}
+
+declare module 'swiper/vue' {
+  import _Vue from 'vue'
+  export class Swiper extends _Vue {}
+  export class SwiperSlide extends _Vue {}
 }

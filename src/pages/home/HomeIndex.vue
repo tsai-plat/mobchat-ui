@@ -1,32 +1,54 @@
 <template>
-  <div class="page-container h-full">
-    <span class="text-sm text-orange-600">homePage</span>
+  <div class="home-page h-full w-full flex flex-col items-stretch">
+    <div class="home-header">
+      <HomeBanner />
+    </div>
+    <div class="major-swiper-container w-full">
+      <div class="px-3 pt-2 pb-1 text-orange-400 flex items-center space-x-2">
+        <label for="#">高级功能</label>
+        <img :src="vip" alt="" :style="{ width: `${iconSize}px`, height: `${iconSize}px` }">
+      </div>
 
-    <van-button type="primary" @click="test">你好</van-button>
+      <div class="w-full px-3 pb-5">
+        <HomeMajorSlider />
+      </div>
+    </div>
+    <div class="list-container">
+      <HomeChatList />
+    </div>
   </div>
 </template>
-
+<!-- <script lang="ts">
+import { register } from 'swiper/element/bundle';
+register()
+</script> -->
 <script setup lang="ts">
-import { showConfirmDialog, showToast } from 'vant'
+import HomeBanner from './HeadBanner.vue'
+import HomeMajorSlider from './MajorSlider.vue'
+import HomeChatList from './HomeChatList.vue'
+import vip from '@/assets/icons/icon-vip.png'
+import { ref } from 'vue';
 
-function test() {
-  showConfirmDialog({
-    title: '获取授权',
-    message: '本次操作将获取你的微信昵称和头像,用于海报生成.',
-  })
-    .then(() => {
-      showToast({
-        message: 'Success',
-        position: 'top',
-      })
-    })
-    .catch(() => {
-      showToast({
-        message: '获取失败',
-        position: 'top',
-      })
-    })
-}
+const iconSize = ref<number>(24)
+
 </script>
 
-<style scoped lang="less"></style>
+<style scoped lang="less">
+.home-page {
+  overflow: hidden;
+
+  .major-swiper-container {
+    background-image: linear-gradient(-225deg, #FFFEFF 0%, #D7FFFE 100%);
+  }
+}
+
+.home-header {
+  flex: 0 0 132px;
+}
+
+.list-container {
+  border-top: 0.05em solid rgba(#424242, 0.1);
+  flex: 1 1 auto;
+  overflow-y: auto;
+}
+</style>

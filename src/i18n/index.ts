@@ -5,7 +5,9 @@ import { messages } from './locales'
 export const lang = 'zhCN'
 
 export const i18n = createI18n({
+  legacy: false,
   locale: lang,
+  fallbackLocale: lang,
   globalInjection: true,
   messages,
 })

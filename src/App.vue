@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
+import { vanThemeVars } from './ui/themes'
+
 
 const compatiblePc = () => {
   const userAgentInfo = window.navigator.userAgent
@@ -38,7 +40,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <van-config-provider theme="light">
+  <van-config-provider theme="light" :theme-vars="vanThemeVars" theme-vars-scope="global">
     <RouterView />
   </van-config-provider>
 </template>

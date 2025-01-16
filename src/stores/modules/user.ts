@@ -1,7 +1,7 @@
 import { RandomHelper, storage } from '@/utils'
 import { defineStore } from 'pinia'
 import { ACCESS_TOKEN, CLIENT_UUID, CURRENT_USER } from '../mutation-types'
-import { ClientTypeEnum, type IUser } from '@tsailab/core-types'
+import { ClientTypeEnum, type IUser, type TokenUserCache } from '@tsailab/core-types'
 import { isWechat } from '@/utils/runtimes/wechat-browser-detect'
 
 export interface IUserState {
@@ -58,6 +58,13 @@ export const useUserStore = defineStore('loto-user', {
     logout() {
       this.removeToken()
       this.resetUserInfo()
+    },
+
+    async signinByTokenUser(tokenUser: TokenUserCache): Promise<boolean> {
+      const { token, ...user } = tokenUser
+      await this.setToken(token)
+      await this.setUserInfo(user)
+      return true
     },
 
     removeToken() {

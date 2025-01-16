@@ -27,7 +27,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       preprocessorOptions: {
         less: {
           javascriptEnabled: true,
-          additionalData: `@import "${resolve(__dirname, 'src/styles/variables.less')}";`,
+          additionalData: `@import "${resolve(__dirname, 'src/styles/main.less')}";`,
         },
       },
     },

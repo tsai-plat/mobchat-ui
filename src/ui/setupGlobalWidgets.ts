@@ -15,6 +15,7 @@ import SvgIcon from './icons/SvgIcon.vue'
 import LotoIcon from './icons/LotoIconify.vue'
 import ChatListItem from './chat/ChatListItem.vue'
 import { SearchBar } from '.'
+import { GradientText } from './gradient-text'
 
 export function setupGlobalWidgets(app: App) {
   app.use(Cell)
@@ -31,4 +32,5 @@ export function setupGlobalWidgets(app: App) {
   app.component('loto-icon', LotoIcon)
   app.component('chat-list-item', ChatListItem)
   app.component('search-bar', SearchBar)
+  app.component('gradient-text', GradientText)
 }

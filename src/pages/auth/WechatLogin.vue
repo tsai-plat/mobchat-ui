@@ -2,7 +2,7 @@
   <div class="wechat-login-page">
 
     <div class="sigin-container bg-transparent">
-      <div class="header py-10">
+      <div class="header py-5">
         <SignHeader />
       </div>
       <van-form @submit="submitHandle">
@@ -90,7 +90,10 @@ async function tryLogin() {
         await signinByTokenUser(ret as TokenUserCache)
       }
       setTimeout(() => {
+        history.replaceState(null, '', `?id=${Date.now()}`)
+        window.history.replaceState(null, '', window.location.href)
         window.location.replace(window.location.origin)
+
       }, 100)
     } catch (ex: any) {
       let html = `获取授权失败<br>是否刷新授权码？`
@@ -135,7 +138,7 @@ onMounted(() => {
     min-height: 35vh;
     width: 100%;
     padding: 0px 20px;
-    padding-top: calc(25vh - 100px);
+    padding-top: calc(25vh - 140px);
   }
 }
 </style>

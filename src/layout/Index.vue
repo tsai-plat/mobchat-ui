@@ -22,7 +22,7 @@ import AppTabbar from './toolbar/AppTabbar.vue';
  * 浏览器可以搭配插件vue.js Devtools 查看以及控制台网络降速测试
  * 需要长缓存的组件名称
  */
-const cacheRoutes: string[] = [UIPageEnum.BASE_HOME_NAME]
+const cacheRoutes: string[] = [UIPageEnum.BASE_HOME_NAME, UIPageEnum.USER_CENTER_NAME]
 </script>
 
 <style scoped lang="less">
@@ -30,5 +30,7 @@ const cacheRoutes: string[] = [UIPageEnum.BASE_HOME_NAME]
   height: calc(100vh - 50px);
   padding: 0;
   margin: 0;
+  overflow: hidden;
+
 }
 </style>

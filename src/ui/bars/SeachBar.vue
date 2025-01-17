@@ -6,7 +6,8 @@
           ...iconStyles,
         }" />
       </div>
-      <input type="text" ref="inputRef" v-model="keywords" :placeholder="placeholder" />
+      <input type="text" ref="inputRef" v-model="keywords" :placeholder="placeholder" enterkeyhint="search"
+        @keyup.enter="searchEventHandle" />
     </div>
   </section>
 </template>
@@ -39,6 +40,9 @@ const iconStyles = computed(() => {
   return s
 })
 
+function searchEventHandle() {
+  inputRef.value?.blur();// 关闭手机键盘
+}
 </script>
 
 <style scoped lang="less">

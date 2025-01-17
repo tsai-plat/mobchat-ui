@@ -1,6 +1,8 @@
 <template>
-  <van-tabbar v-model="active" fixed route safe-area-inset-bottom class="loto-tabbar">
-    <van-tabbar-item v-for="(item, index) in allMenus" :key="index" :to="item.to" :name="item.to.name"
+  <van-tabbar v-model="active" fixed route safe-area-inset-bottom class="loto-tabbar" :style="{
+    zIndex: 9999
+  }">
+    <van-tabbar-item replace v-for="(item, index) in allMenus" :key="index" :to="item.to" :name="item.to.name"
       :badge="item?.badge">
       <span>{{ item.title }}</span>
       <template #icon="props">
@@ -21,6 +23,10 @@ const active = ref(0)
 </script>
 
 <style scoped lang="less">
+.loto-tabbar {
+  background-color: #f7f8fa
+}
+
 .van-tabbar-item {
   --van-tabbar-item-text-color: #424242;
 }

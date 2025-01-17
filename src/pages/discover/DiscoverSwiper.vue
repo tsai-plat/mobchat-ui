@@ -1,5 +1,5 @@
 <template>
-  <swiper class="discover-swiper" :slidesPerView="1.2" :spaceBetween="24" :pagination="{
+  <swiper class="discover-swiper" :slidesPerView="1.5" :spaceBetween="20" :pagination="{
     clickable: true,
   }" :modules="modules">
     <swiper-slide v-for="(it, index) in items" :key="index" class="discover-swiper-slide">
@@ -9,17 +9,13 @@
         'card-bg3': index % 3 === 2,
       }">
         <div class="discover-swiper-card__head flex items-center justify-between pb-3">
-          <img :src="it.icon" :alt="it.name" class="card-icon">
+          <img :src="it.icon" :alt="it.name" class="card-icon h-8 w-8">
           <span class="name-clip ms-4">{{ it.name }}</span>
           <div class="right-action pe-3">
-            <loto-icon icon="ep:top-right" :style="{
-              fontSize: '2.15em',
-              fontWeight: 900,
-            }" />
+            <loto-icon icon="ep:top-right" />
           </div>
         </div>
         <img :src="it.image" class="card-img">
-
       </div>
     </swiper-slide>
   </swiper>
@@ -35,6 +31,17 @@ const modules = ref([])
 
 <style scoped lang="less">
 .discover-swiper {
+  @font-size: 1.625em;
+
+  .swiper-slide {
+    height: 208px;
+  }
+
+  img.card-img {
+    max-height: 100px;
+    border-radius: 4px;
+  }
+
   .discover-swiper-slide {
     padding: 20px 0px;
   }
@@ -43,14 +50,22 @@ const modules = ref([])
     background-color: aliceblue;
     border-radius: .6em;
 
+    svg.loto-iconify {
+      --num: 0;
+      --deg: calc(var(--num) * 1deg);
+      font-size: @font-size;
+      color: linear-gradient(120deg, hsl(var(--deg), 100%, 50%) 30%, hsl(calc(var(--deg) + 30deg), 100%, 50%));
+      animation: rotate 3s linear infinite;
+    }
+
     .card-icon {
-      width: 60px;
-      height: 60px;
+      width: 40px;
+      height: 40px;
     }
 
     span.name-clip {
       font-weight: 700;
-      font-size: 2.615em;
+      font-size: @font-size;
       --num: 0;
       --deg: calc(var(--num) * 1deg);
       background: linear-gradient(120deg, hsl(var(--deg), 100%, 50%) 30%, hsl(calc(var(--deg) + 30deg), 100%, 50%));
@@ -58,9 +73,6 @@ const modules = ref([])
       color: transparent;
     }
 
-    .right-action {
-      color: linear-gradient(120deg, hsl(var(--deg), 100%, 50%) 30%, hsl(calc(var(--deg) + 30deg), 100%, 50%));
-    }
   }
 }
 

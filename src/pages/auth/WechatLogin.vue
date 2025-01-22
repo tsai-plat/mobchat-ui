@@ -73,6 +73,7 @@ function submitHandle() {
 
 function reloadAuthorizeUrl(force: boolean = false) {
   const url = client.buildAuthorizeUrl(force)
+  history.replaceState(null, '', `?id=${Date.now()}`)
   window.location.replace(url)
 }
 
@@ -110,6 +111,7 @@ async function tryLogin() {
 
   } else {
     const url = client.buildAuthorizeUrl()
+    history.replaceState(null, '', `?id=${Date.now()}`)
     window.location.replace(url)
   }
 }

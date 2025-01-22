@@ -3,16 +3,18 @@ export {}
 declare global {
   type Recordable<T = any> = Record<string, T>
 
+  type AppInfo = {
+    appName: string
+    version: string
+    author?: string
+    hash: string
+    buildAt: string
+    cliid: string
+  }
+
   interface Window {
     $log: any
-    __APP_INFO__: {
-      appName: string
-      version: string
-      author?: string
-      hash: string
-      buildAt: string
-      cliid: string
-    }
+    __APP_INFO__: AppInfo
   }
   declare type Recordable<T = any> = Record<string, T>
   namespace WeixinJSBridge {

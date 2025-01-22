@@ -56,7 +56,7 @@
   width: 100%;
   min-height: 168px;
   color: white;
-  background: url(../../assets//images/head-bg.jpg) no-repeat;
+  background: url(../../assets/images/head-bg.jpg) no-repeat;
   background-size: 100% 100%;
 
   .inner-box {
@@ -89,7 +89,7 @@
 
   .vip-card {
     position: absolute;
-    bottom: -52px;
+    bottom: -50px;
     left: 0;
     width: 100%;
     padding: 0px 16px 0px 16px;

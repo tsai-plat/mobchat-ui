@@ -1,6 +1,8 @@
 export enum UIPageEnum {
   BASE_HOME = '/index',
   BASE_HOME_NAME = 'HomeIndex',
+  CHATBOT_ROOT = '/chat/1000',
+  CHATBOT_NAME = 'Chatbot',
   CREATION = '/creation',
   CREATION_NAME = 'creation/index',
   DISCOVER = '/disc/index',

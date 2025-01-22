@@ -33,8 +33,13 @@ const modules = ref([])
 .discover-swiper {
   @font-size: 1.625em;
 
+  padding-left: 8px;
+  padding-right: 8px;
+
   .swiper-slide {
     height: 208px;
+
+    :first-child {}
   }
 
   img.card-img {

@@ -1,6 +1,7 @@
 import { UIPageEnum } from '@/enums'
 import type { RouteRecordRaw } from 'vue-router'
 import HomeIndex from '@/pages/home/HomeIndex.vue'
+import { ChatbotLayout, Layout } from './route.constant'
 
 const routeLayoutList: RouteRecordRaw[] = [
   {
@@ -67,16 +68,34 @@ export const SigninRoute: RouteRecordRaw = {
 export const LayoutRoute: RouteRecordRaw = {
   path: '/',
   name: 'RootLayout',
-  component: () => import('@/layout/Index.vue'),
+  component: Layout,
   redirect: UIPageEnum.BASE_HOME,
   children: [...routeLayoutList],
 }
 
+export const ChatLayoutRoute: RouteRecordRaw = {
+  path: '/chat',
+  name: 'ChatbotLayout',
+  redirect: UIPageEnum.CHATBOT_ROOT,
+  component: ChatbotLayout,
+  children: [
+    {
+      path: '/chat/:chatid',
+      name: UIPageEnum.CHATBOT_NAME,
+      component: () => import('@/pages/chatbot/ChatPage.vue'),
+      meta: {
+        title: '智能助手',
+        goback: '/index',
+      },
+    },
+  ],
+}
+
 export const routes: RouteRecordRaw[] = [
   LayoutRoute,
+  ChatLayoutRoute,
   LoginRoute,
   WechatLoginRoute,
   SigninRoute,
-
   { path: '/:pathMatch(.*)*', redirect: '/' },
 ]

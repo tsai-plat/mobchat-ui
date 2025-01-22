@@ -9,7 +9,7 @@
         <img :src="vip" alt="" :style="{ width: `${iconSize}px`, height: `${iconSize}px` }">
       </div>
 
-      <div class="w-full px-3 pb-5">
+      <div class="w-full pb-5">
         <HomeMajorSlider />
       </div>
     </div>

@@ -19,6 +19,7 @@ interface ImportMetaEnv {
   VITE_GLOB_APP_NAME: string
   VITE_GLOB_API_URL: string
   VITE_GLOB_IMG_URL: string
+  VITE_GLOB_ISSUER?: string
 
   /** wechat */
   VITE_WECHAT_GH_APPID: string

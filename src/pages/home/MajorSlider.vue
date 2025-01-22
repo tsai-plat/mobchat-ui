@@ -45,6 +45,11 @@ const modules = ref([])
 </script>
 
 <style scoped lang="scss">
+.major-swiper {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .major-card {
   border-radius: 8px;
 

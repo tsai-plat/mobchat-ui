@@ -1,7 +1,7 @@
 <template>
   <div class="creation-page h-full w-full overflow-hidden flex flex-col overflow-y-auto">
-    <div class="creation-page-header pt-5 pb-3 px-6">
-      <gradient-text size="1.35em" gradient="linear-gradient(to top,#75f306 0%, #08c421 100%)" :font-weight="600">
+    <div class="creation-page-header bg-transparent pt-5 pb-3 px-6">
+      <gradient-text size="1.35em" :font-weight="600">
         智能创作
       </gradient-text>
     </div>
@@ -25,7 +25,6 @@ import CreationGrid from './CreationGrid.vue'
 
 <style scoped lang="less">
 .creation-page {
-
   .creation-page-header {
     background-image: linear-gradient(185deg, #f5f7fa 0%, #c3cfe2 100%);
   }
